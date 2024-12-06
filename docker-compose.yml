@@ -2,12 +2,12 @@ version: '3.1'
 
 services:
   wordpress:
-    image: wordpress
+    build: .
     container_name: ecomm_wp
     ports:
       - 8081:80
     environment:
-      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_HOST: ecomm_db
       WORDPRESS_DB_USER: exampleuser
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
@@ -17,6 +17,7 @@ services:
   db:
     image: mysql:8.0
     platform: linux/x86_64
+    container_name: ecomm_db
     environment:
       MYSQL_DATABASE: exampledb
       MYSQL_USER: exampleuser
